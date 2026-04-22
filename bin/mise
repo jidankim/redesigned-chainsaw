@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+export MISE_DATA_DIR="${MISE_DATA_DIR:-$ROOT_DIR/.local/share/mise}"
+export MISE_CACHE_DIR="${MISE_CACHE_DIR:-$ROOT_DIR/.cache/mise}"
+export MISE_CONFIG_DIR="${MISE_CONFIG_DIR:-$ROOT_DIR/.config/mise}"
+export MISE_STATE_DIR="${MISE_STATE_DIR:-$ROOT_DIR/.local/state/mise}"
+
+MISE_BIN="$ROOT_DIR/.tools/mise/bin/mise"
+
+if [[ ! -x "$MISE_BIN" ]]; then
+  "$ROOT_DIR/scripts/bootstrap-mise.sh"
+fi
+
+exec "$MISE_BIN" "$@"

@@ -1,0 +1,6 @@
+resume/clickworthy/out/*.pdf
+.cache/
+.config/
+.local/
+.tools/
+ref/

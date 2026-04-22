@@ -1,0 +1,22 @@
+[tools]
+"github:typst/typst" = "v0.14.2"
+
+[tasks."resume:general"]
+description = "Compile the general software engineer resume"
+run = "typst compile --root . resume/clickworthy/general.typ resume/clickworthy/out/general.pdf"
+
+[tasks."resume:backend"]
+description = "Compile the backend-focused software engineer resume"
+run = "typst compile --root . resume/clickworthy/backend.typ resume/clickworthy/out/backend.pdf"
+
+[tasks."resume:frontend"]
+description = "Compile the frontend-focused software engineer resume"
+run = "typst compile --root . resume/clickworthy/frontend.typ resume/clickworthy/out/frontend.pdf"
+
+[tasks."resume:all"]
+description = "Compile all resume variants"
+run = [
+  { task = "resume:general" },
+  { task = "resume:backend" },
+  { task = "resume:frontend" },
+]
